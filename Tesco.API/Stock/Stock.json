@@ -1,0 +1,35 @@
+[
+  {
+    "skuId": 1,
+    "skuName": "A",
+    "name": "2 Ltr Bottle",
+    "brand": "PEPSI",
+    "price": 20.50,
+    "offerQuantity": 3,
+    "offerPrice": 15.50,
+    "offerExpiryDate": "2022-09-12T00:00:00",
+    "description": "Handle carefully"
+  },
+  {
+    "skuId": 2,
+    "skuName": "B",
+    "name": "Glass",
+    "brand": "FinCorp",
+    "price": 22.00,
+    "offerQuantity": 2,
+    "offerPrice": 10.00,
+    "offerExpiryDate": "2022-09-12T00:00:00",
+    "description": "Handle carefully"
+  },
+  {
+    "skuId": 3,
+    "skuName": "C",
+    "name": "Shirt",
+    "brand": "Zara",
+    "price": 53.12,
+    "offerQuantity": 4,
+    "offerPrice": 45.00,
+    "offerExpiryDate": "2022-09-12T00:00:00",
+    "description": "Handle carefully"
+  }
+]

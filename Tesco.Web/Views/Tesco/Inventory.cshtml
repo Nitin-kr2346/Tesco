@@ -1,0 +1,106 @@
+﻿@using Tesco.Model.ViewModel
+@using Tesco.Helper
+@model InventoryViewModel
+
+@{
+    ViewData["Title"] = "Inventory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h4>Products </h4>
+    <hr />
+    @using (Html.BeginForm(Constants.TESCO, Constants.INVENTORY, FormMethod.Post, new { id = "FormProducts" }))
+    {
+        <div class="dl-horizontal">
+            <table class="table table-striped table-bordered table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(x => x.Products.FirstOrDefault().SkuName)</th>
+                        <th>@Html.DisplayNameFor(x => x.Products.FirstOrDefault().Name)</th>
+                        <th>@Html.DisplayNameFor(x => x.Products.FirstOrDefault().Brand)</th>
+                        <th>@Html.DisplayNameFor(x => x.Products.FirstOrDefault().Price)</th>
+                        <th>@Html.DisplayNameFor(x => x.Products.FirstOrDefault().Description)</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Products.Count(); i++)
+                    {
+                        @if (i == Model.Products.Count - 1 && Model.EnableAdd == true)
+                        {
+                            <tr>
+                                <td>
+                                    <input type="hidden" asp-for="Products[i].SkuId" />
+                                    <input type="hidden" asp-for="Products[i].OfferPrice" />
+                                    <input type="hidden" asp-for="Products[i].OfferQuantity" />
+                                    <input type="hidden" asp-for="Products[i].OfferExpiryDate" />
+                                    <input type="text" asp-for="Products[i].SkuName" />
+                                </td>
+                                <td><input type="text" asp-for="Products[i].Name" /></td>
+                                <td><input type="number" asp-for="Products[i].Brand" /></td>
+                                <td><input type="number" asp-for="Products[i].Price" /></td>
+                                <td><input type="text" asp-for="Products[i].Description" /></td>
+                                <td>
+                                    <a href="javascript:void(0)" onclick="SaveClick()">Save</a>
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                @{
+                                    var product = Model.Products[i];
+                                    <td>
+                                        @product.SkuName
+                                        <input type="hidden" asp-for="Products[i].SkuId" />
+                                        <input type="hidden" asp-for="Products[i].SkuName" />
+                                        <input type="hidden" asp-for="Products[i].Name" />
+                                        <input type="hidden" asp-for="Products[i].Brand" />
+                                        <input type="hidden" asp-for="Products[i].OfferQuantity" />
+                                        <input type="hidden" asp-for="Products[i].OfferPrice" />
+                                        <input type="hidden" asp-for="Products[i].OfferExpiryDate" />
+                                        <input type="hidden" asp-for="Products[i].Price" />
+                                        <input type="hidden" asp-for="Products[i].Description" />
+                                    </td>
+                                    <td>@product.Name</td>
+                                    <td>@product.Brand</td>
+                                    <td>@product.Price</td>
+                                    <td>@product.Description</td>
+                                }
+                                <td>
+                                    <a onclick="MedicineDetails(@Model.Products[i].SkuId)" href="javascript:void(0)">Details</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+                @if (Model.EnableAdd == false || Model.EnableAdd == null)
+                {
+                    <tfoot>
+                        <tr>
+                            <td colspan="6">
+                                <a href="javascript:void(0)" onclick="AddClick()">Add</a>
+                            </td>
+                        </tr>
+                    </tfoot>
+                }
+            </table>
+        </div>
+        <button style="display: none" type="submit" id="FormMedicinesSubmit">Enter</button>
+        <input type="hidden" id="SaveClick" asp-for="SaveClick" value="@Model.SaveClick" />
+        <input type="hidden" id="EnableAdd" asp-for="EnableAdd" value="@Model.EnableAdd" />
+        <input type="hidden" id="SelectedMedicine" asp-for="SelectedMedicine" value="@Model.SelectedMedicine" />
+    }
+</div>
+
+@*<div id="MedicineDetailsPartial">
+    @{
+        @await Html.PartialAsync(Constants.MEDICINEDETAILS, Model);
+    }
+</div>*@
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<script type="text/javascript" src="~/js/View/Medicines.js"></script>

@@ -1,0 +1,6 @@
+[
+  {
+    "Interface": "Tesco.Service.IInventoryService, Tesco.Service",
+    "Implementation": "Tesco.Service.InventoryService, Tesco.Service"
+  }
+]

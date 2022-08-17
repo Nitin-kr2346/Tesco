@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tesco.Helper\Tesco.Helper.csproj" />
+    <ProjectReference Include="..\Tesco.Model\Tesco.Model.csproj" />
+    <ProjectReference Include="..\Tesco.Service\Tesco.Service.csproj" />
+  </ItemGroup>
+
+
+</Project>
