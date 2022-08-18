@@ -69,7 +69,7 @@
                                     <td>@product.Description</td>
                                 }
                                 <td>
-                                    <a onclick="MedicineDetails(@Model.Products[i].SkuId)" href="javascript:void(0)">Details</a>
+                                    <a onclick="MedicineDetails(@Model.Products[i].SkuId)" href="javascript:void(0)">Add to Cart</a>
                                 </td>
                             </tr>
                         }
@@ -103,4 +103,4 @@
     @Html.ActionLink("Back to List", "Index")
 </p>
 
-<script type="text/javascript" src="~/js/View/Medicines.js"></script>
+<script type="text/javascript" src="~/js/View/Inventory.js"></script>
