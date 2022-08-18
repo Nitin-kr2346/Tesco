@@ -14,5 +14,14 @@
     <ProjectReference Include="..\Tesco.Service\Tesco.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Stock\Cart.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Stock\Stock.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 
 </Project>

@@ -12,8 +12,13 @@
         public const string APPLICATIONJSON = "application/json";
 
         public const string GETPRODUCTS = "Inventory/GetProducts";
+        public const string ADDTOCART = "Inventory/AddtoCart";
+        public const string GETPRODUCTSINCART = "Inventory/GetProductsInCart";
 
         public const string TESCO = "Tesco";
         public const string INVENTORY = "Inventory";
+        public const string CHECKOUT = "Checkout";
+
+        public const string CARTDETAILS = "_CartDetails";
     }
 }

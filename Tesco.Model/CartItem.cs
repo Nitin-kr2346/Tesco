@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Tesco.Model
 {
@@ -9,5 +10,8 @@ namespace Tesco.Model
 
         [JsonPropertyName("quantity")]
         virtual public int Quantity { get; set; }
+
+        [NotMapped]
+        virtual public float Total { get; set; }
     }
 }

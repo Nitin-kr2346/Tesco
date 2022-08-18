@@ -42,6 +42,16 @@ namespace Tesco.Service
         }
 
         /// <summary>
+        /// Get Products in Cart Model
+        /// </summary>
+        /// <returns>CheckoutModel</returns>
+        public CheckoutModel GetProductsInCart() => new CheckoutModel
+        {
+            CartItems = GetCartProducts(),
+            Products = GetProducts()
+        };
+
+        /// <summary>
         /// Adds product to cart
         /// </summary>
         /// <param name="skuId"></param>
@@ -54,7 +64,7 @@ namespace Tesco.Service
             if (cartItems != null && cartItems.Any())
             {
                 bool itemFound = false;
-                for (int i = 0; i <= cartItems.Count(); i++)
+                for (int i = 0; i <= cartItems.Count() - 1; i++)
                 {
                     if (cartItems[i].SkuId == skuId)
                     {

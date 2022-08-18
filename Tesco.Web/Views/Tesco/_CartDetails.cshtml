@@ -1,0 +1,58 @@
+﻿@using Tesco.Model.ViewModel
+@model InventoryViewModel
+
+
+<h4>Cart </h4>
+<div class="dl-horizontal">
+    <table class="table table-striped table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.CartItems.FirstOrDefault().SkuId)</th>
+                <th>@Html.DisplayNameFor(x => x.Products.FirstOrDefault().SkuName)</th>
+                <th>@Html.DisplayNameFor(x => x.CartItems.FirstOrDefault().Quantity)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.CartItems != null && Model.CartItems.Any())
+            {
+                @for (int i = 0; i < Model.CartItems.Count(); i++)
+                {
+
+                    <tr>
+                        @{
+                            var cartItem = Model.CartItems[i];
+                            <td>
+                                @cartItem.SkuId
+                                <input type="hidden" asp-for="CartItems[i].SkuId" />
+                                <input type="hidden" asp-for="CartItems[i].Quantity" />
+                            </td>
+                            <td>
+                                @{
+                                    var name = Model.Products.Where(item => item.SkuId == cartItem.SkuId).FirstOrDefault().SkuName;
+                                    @name
+                                }
+                            </td>
+                            <td>@cartItem.Quantity</td>
+                        }
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3"> No Item Added</td>
+                </tr>
+            }
+        </tbody>
+        @if (Model.CartItems != null && Model.CartItems.Any())
+        {
+            <tfoot>
+                <tr>
+                    <td colspan="6">
+                        <a asp-action="Checkout" asp-controller="Tesco">Move to Checkout</a>
+                    </td>
+                </tr>
+            </tfoot>
+        }
+    </table>
+</div>
